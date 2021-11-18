@@ -18,7 +18,7 @@ services:
       - ./:/var/www/html/
       - ./php/laravel.ini:/usr/local/etc/php/conf.d/laravel.ini
     networks:
-      - ronypermadi
+      - your-project
 
   #Nginx Service
   nginx:
@@ -33,30 +33,30 @@ services:
       - ./:/var/www/html/
       - ./nginx/conf.d/:/etc/nginx/conf.d/
     networks:
-      - ronypermadi
+      - your-project
 
   #MySQL Service
-  db:
-    image: mysql:5.7.32
-    container_name: db
-    restart: unless-stopped
-    tty: true
-    ports:
-      - "3306:3306"
-    environment:
-      MYSQL_DATABASE: ronypermadi
-      MYSQL_ROOT_PASSWORD: noyr
-      SERVICE_TAGS: dev
-      SERVICE_NAME: mysql
-    volumes:
-      - dbdata:/var/lib/mysql/
-      - ./mysql/my.cnf:/etc/mysql/my.cnf
-    networks:
-      - ronypermadi
+  # db:
+  #   image: mysql:5.7.32
+  #   container_name: db
+  #   restart: unless-stopped
+  #   tty: true
+  #   ports:
+  #     - "3306:3306"
+  #   environment:
+  #     MYSQL_DATABASE: noyr
+  #     MYSQL_ROOT_PASSWORD: noyr
+  #     SERVICE_TAGS: dev
+  #     SERVICE_NAME: mysql
+  #   volumes:
+  #     - dbdata:/var/lib/mysql/
+  #     - ./mysql/my.cnf:/etc/mysql/my.cnf
+  #   networks:
+  #     - your-project
 
 #Docker Networks
 networks:
-  ronypermadi:
+  your-project:
     driver: bridge
 #Volumes
 volumes:
